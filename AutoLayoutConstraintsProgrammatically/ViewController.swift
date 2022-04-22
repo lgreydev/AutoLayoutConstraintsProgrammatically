@@ -9,11 +9,25 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    private let myView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .blue
+        return view
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.addSubview(myView)
+        addConstraints()
     }
 
 
 }
 
+
+extension ViewController {
+    private func addConstraints() {
+
+    }
+}
