@@ -28,6 +28,13 @@ class ViewController: UIViewController {
 
 extension ViewController {
     private func addConstraints() {
+        var constraints = [NSLayoutConstraint]()
 
+        constraints.append(myView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor))
+        constraints.append(myView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor))
+        constraints.append(myView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor))
+        constraints.append(myView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor))
+
+        NSLayoutConstraint.activate(constraints)
     }
 }
