@@ -25,15 +25,14 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         addConstraints()
     }
-
-
 }
 
 
 extension ViewController {
+
     private func addConstraints() {
         var constraints = [NSLayoutConstraint]()
 
@@ -44,14 +43,15 @@ extension ViewController {
         constraints.append(blueView.bottomAnchor.constraint(equalTo: view.bottomAnchor))
 
         view.addSubview(redView)
-        constraints.append(redView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100))
-        constraints.append(redView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100))
-        constraints.append(redView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100))
-        constraints.append(redView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100))
+
+        // Width and height
+        constraints.append(redView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5))
+        constraints.append(redView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5))
+
+        // Center
+        constraints.append(redView.centerXAnchor.constraint(equalTo: view.centerXAnchor))
+        constraints.append(redView.centerYAnchor.constraint(equalTo: view.centerYAnchor))
 
         NSLayoutConstraint.activate(constraints)
     }
-
-
-
 }
