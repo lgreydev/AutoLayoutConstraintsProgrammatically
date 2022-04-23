@@ -50,6 +50,7 @@ extension ViewController {
         var constraints = [NSLayoutConstraint]()
 
         view.addSubview(blueView)
+        // Offset from the edges
         constraints.append(blueView.leadingAnchor.constraint(equalTo: view.leadingAnchor))
         constraints.append(blueView.trailingAnchor.constraint(equalTo: view.trailingAnchor))
         constraints.append(blueView.topAnchor.constraint(equalTo: view.topAnchor))
@@ -68,20 +69,19 @@ extension ViewController {
 //        constraints.append(blueView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100))
 
         view.addSubview(redView)
+        // Size Height and Width
+        constraints.append(redView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3)) // // Size height
+        constraints.append(redView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3)) // Size width
 
-        // Width and height
-        constraints.append(redView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3))
-        constraints.append(redView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3))
-
-        // Center
-        constraints.append(redView.centerXAnchor.constraint(equalTo: view.centerXAnchor))
-        constraints.append(redView.centerYAnchor.constraint(equalTo: view.centerYAnchor))
+        // Center alignment
+        constraints.append(redView.centerXAnchor.constraint(equalTo: view.centerXAnchor)) // Center
+        constraints.append(redView.centerYAnchor.constraint(equalTo: view.centerYAnchor)) // Center
 
         // Image 1
         view.addSubview(imageView_1)
-        constraints.append(imageView_1.heightAnchor.constraint(equalToConstant: 50)) // Height
-        constraints.append(imageView_1.widthAnchor.constraint(equalToConstant: 50)) // Width
-        constraints.append(imageView_1.centerXAnchor.constraint(equalTo: view.centerXAnchor))
+        constraints.append(imageView_1.heightAnchor.constraint(equalToConstant: 50)) // Size height
+        constraints.append(imageView_1.widthAnchor.constraint(equalToConstant: 50)) // Size width
+        constraints.append(imageView_1.centerXAnchor.constraint(equalTo: view.centerXAnchor)) // Center
         constraints.append(imageView_1.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20))
 
         // Image 2
@@ -89,7 +89,7 @@ extension ViewController {
         imageView_2.heightAnchor.constraint(equalToConstant: 70).isActive = true
         imageView_2.widthAnchor.constraint(equalToConstant: 70).isActive = true
         imageView_2.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        imageView_2.topAnchor.constraint(equalTo: view.topAnchor, constant: 130).isActive = true
+        imageView_2.topAnchor.constraint(equalTo: imageView_1.bottomAnchor, constant: 20).isActive = true
 
         NSLayoutConstraint.activate(constraints)
     }
