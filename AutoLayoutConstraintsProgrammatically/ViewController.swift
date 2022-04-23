@@ -37,6 +37,15 @@ class ViewController: UIViewController {
         return view
     }()
 
+    private lazy var nextButton: UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(buttonTap), for: .touchUpInside)
+        button.setTitle("Next VC", for: .normal)
+        button.backgroundColor = .clear
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -57,16 +66,16 @@ extension ViewController {
         constraints.append(blueView.bottomAnchor.constraint(equalTo: view.bottomAnchor))
 
         // Safe Area
-//        constraints.append(blueView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor))
-//        constraints.append(blueView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor))
-//        constraints.append(blueView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor))
-//        constraints.append(blueView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor))
+        //        constraints.append(blueView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor))
+        //        constraints.append(blueView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor))
+        //        constraints.append(blueView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor))
+        //        constraints.append(blueView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor))
 
         // With constant
-//        constraints.append(blueView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100))
-//        constraints.append(blueView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -100))
-//        constraints.append(blueView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100))
-//        constraints.append(blueView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100))
+        //        constraints.append(blueView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100))
+        //        constraints.append(blueView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -100))
+        //        constraints.append(blueView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100))
+        //        constraints.append(blueView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100))
 
         view.addSubview(redView)
         // Size Height and Width
@@ -91,6 +100,21 @@ extension ViewController {
         imageView_2.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         imageView_2.topAnchor.constraint(equalTo: imageView_1.bottomAnchor, constant: 20).isActive = true
 
+        // Button
+        view.addSubview(nextButton)
+        nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
+
         NSLayoutConstraint.activate(constraints)
+    }
+}
+
+// MARK: - Action
+extension ViewController {
+    @objc func buttonTap() {
+        let vc = SecondViewController()
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .flipHorizontal
+        self.showDetailViewController(vc, sender: self)
     }
 }
