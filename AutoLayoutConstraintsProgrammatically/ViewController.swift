@@ -23,7 +23,14 @@ class ViewController: UIViewController {
         return view
     }()
 
-    private let imageView: UIImageView = {
+    private let imageView_1: UIImageView = {
+        let image = UIImage(named: "github")
+        let view = UIImageView(image: image)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    private let imageView_2: UIImageView = {
         let image = UIImage(named: "github")
         let view = UIImageView(image: image)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -63,18 +70,26 @@ extension ViewController {
         view.addSubview(redView)
 
         // Width and height
-        constraints.append(redView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5))
-        constraints.append(redView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5))
+        constraints.append(redView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3))
+        constraints.append(redView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3))
 
         // Center
         constraints.append(redView.centerXAnchor.constraint(equalTo: view.centerXAnchor))
         constraints.append(redView.centerYAnchor.constraint(equalTo: view.centerYAnchor))
 
-        view.addSubview(imageView)
-        constraints.append(imageView.heightAnchor.constraint(equalToConstant: 100))
-        constraints.append(imageView.widthAnchor.constraint(equalToConstant: 100))
-        constraints.append(imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor))
-        constraints.append(imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20))
+        // Image 1
+        view.addSubview(imageView_1)
+        constraints.append(imageView_1.heightAnchor.constraint(equalToConstant: 50)) // Height
+        constraints.append(imageView_1.widthAnchor.constraint(equalToConstant: 50)) // Width
+        constraints.append(imageView_1.centerXAnchor.constraint(equalTo: view.centerXAnchor))
+        constraints.append(imageView_1.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20))
+
+        // Image 2
+        view.addSubview(imageView_2)
+        imageView_2.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        imageView_2.widthAnchor.constraint(equalToConstant: 70).isActive = true
+        imageView_2.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        imageView_2.topAnchor.constraint(equalTo: view.topAnchor, constant: 130).isActive = true
 
         NSLayoutConstraint.activate(constraints)
     }
